@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IRISH HUB - Get Key</title>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{background:#0d0d12;color:#e0e0e0;font-family:'Segoe UI',sans-serif;display:flex;justify-content:center;align-items:center;min-height:100vh}
+        .card{background:#1a1a22;border:1px solid #ae8e65;border-radius:16px;padding:40px;width:420px;text-align:center}
+        .title{font-size:28px;font-weight:700;color:#ae8e65;margin-bottom:6px}
+        .subtitle{font-size:14px;color:#888;margin-bottom:28px}
+        .step{background:#222230;border-radius:12px;padding:14px 18px;margin-bottom:12px;text-align:left;display:flex;align-items:center;gap:12px}
+        .step-num{background:#ae8e65;color:#0d0d12;width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;flex-shrink:0}
+        .step-text{font-size:13px;line-height:1.4}
+        .btn{display:block;width:100%;padding:14px;border:none;border-radius:10px;font-size:16px;font-weight:600;cursor:pointer;margin-top:10px;transition:transform 0.1s}
+        .btn:active{transform:scale(0.97)}
+        .btn-primary{background:#ae8e65;color:#0d0d12}
+        .btn-secondary{background:#2a2a38;color:#ccc}
+        .btn-secondary:hover{background:#333344}
+        .divider{height:1px;background:#333;margin:18px 0}
+        .footer{margin-top:18px;font-size:12px;color:#555}
+        .footer a{color:#7289da;text-decoration:none}
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="title">IRISH HUB</div>
+        <div class="subtitle">Completa los pasos para obtener tu key</div>
+        <div class="step"><div class="step-num">1</div><div class="step-text">Haz clic en "Obtener Key" y seras redirigido a Linkvertise.</div></div>
+        <div class="step"><div class="step-num">2</div><div class="step-text">Completa el desafio (ver articulos, esperar unos segundos).</div></div>
+        <div class="step"><div class="step-num">3</div><div class="step-text">Despues de completar, tu key aparecera en la siguiente pagina.</div></div>
+        <button class="btn btn-primary" id="getkeyBtn">Obtener Key</button>
+        <div class="divider"></div>
+        <button class="btn btn-secondary" id="discordBtn">Join Discord</button>
+        <div class="footer"><a href="https://discord.gg/ZMAAe27Hw" target="_blank">Discord</a></div>
+    </div>
+    <script>
+        var LINKVERTISE_URL="https://linkvertise.com/YOUR_ID/irish-hub";
+        document.getElementById("getkeyBtn").addEventListener("click",function(){
+            window.location.href=LINKVERTISE_URL;
+        });
+        document.getElementById("discordBtn").addEventListener("click",function(){
+            window.open("https://discord.gg/ZMAAe27Hw","_blank");
+        });
+    </script>
+</body>
+</html>
