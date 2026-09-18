@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IRISH HUB - Your Key</title>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{background:#0d0d12;color:#e0e0e0;font-family:'Segoe UI',sans-serif;display:flex;justify-content:center;align-items:center;min-height:100vh}
+        .card{background:#1a1a22;border:1px solid #ae8e65;border-radius:16px;padding:40px;width:420px;text-align:center}
+        .title{font-size:28px;font-weight:700;color:#ae8e65;margin-bottom:6px}
+        .subtitle{font-size:14px;color:#888;margin-bottom:28px}
+        .key-box{background:#121218;border:1px solid #ae8e65;border-radius:10px;padding:18px;font-family:Consolas,monospace;font-size:22px;color:#ae8e65;letter-spacing:2px;word-break:break-all;cursor:pointer;user-select:all;transition:background 0.2s}
+        .key-box:hover{background:#1e1e2a}
+        .copy-hint{font-size:12px;color:#666;margin-top:10px}
+        .status{font-size:13px;margin-top:12px;display:none}
+        .btn{display:block;width:100%;padding:14px;border:none;border-radius:10px;font-size:16px;font-weight:600;cursor:pointer;margin-top:14px;transition:transform 0.1s}
+        .btn:active{transform:scale(0.97)}
+        .btn-secondary{background:#2a2a38;color:#ccc}
+        .btn-secondary:hover{background:#333344}
+        .divider{height:1px;background:#333;margin:18px 0}
+        .footer{margin-top:18px;font-size:12px;color:#555}
+        .footer a{color:#7289da;text-decoration:none}
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="title">IRISH HUB</div>
+        <div class="subtitle">Tu key generada</div>
+        <div class="key-box" id="keyBox" onclick="copyKey()">Generating...</div>
+        <div class="copy-hint">Clic en la key para copiarla</div>
+        <div class="status" id="status"></div>
+        <div class="divider"></div>
+        <button class="btn btn-secondary" id="discordBtn">Join Discord</button>
+        <div class="footer"><a href="https://discord.gg/ZMAAe27Hw" target="_blank">Discord</a></div>
+    </div>
+    <script>
+        var SECRET="IRISH_HUB_2024_X9K2";
+        var CHARSET="ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        function crc32(s){var c=0xFFFFFFFF;for(var i=0;i<s.length;i++){c^=s.charCodeAt(i);for(var j=0;j<8;j++){c=(c&1)?((c>>>1)^0xEDB88320):(c>>>1);}}return(c^0xFFFFFFFF)>>>0;}
+        function makeChecksum(p){var h=crc32(SECRET+p);var s="";for(var i=0;i<4;i++){s=CHARSET[h%36]+s;h=Math.floor(h/36);}return s;}
+        function generateKey(){var c="ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";var p="";for(var i=0;i<8;i++){p+=c.charAt(Math.floor(Math.random()*c.length));}var ch=makeChecksum(p);return"IRISH-"+p.substring(0,4)+"-"+p.substring(4,8)+"-"+ch;}
+        var currentKey=generateKey();
+        document.getElementById("keyBox").textContent=currentKey;
+        function copyKey(){if(navigator.clipboard){navigator.clipboard.writeText(currentKey).then(function(){showStatus("Key copiada!","#55cc77");});}else{var ta=document.createElement("textarea");ta.value=currentKey;document.body.appendChild(ta);ta.select();document.execCommand("copy");document.body.removeChild(ta);showStatus("Key copiada!","#55cc77");}}
+        function showStatus(m,c){var st=document.getElementById("status");st.textContent=m;st.style.color=c||"#888";st.style.display="block";}
+        document.getElementById("discordBtn").addEventListener("click",function(){window.open("https://discord.gg/ZMAAe27Hw","_blank");});
+    </script>
+</body>
+</html>
